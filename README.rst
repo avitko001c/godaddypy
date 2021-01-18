@@ -35,9 +35,13 @@ Third, create the directory in your home called .godaddy and edit the credential
 
 ~/.godaddy/credentials
 
+.. code-block:: bash
+
   [default]
   api_key=<Your API Key>
   api_secret=<Your API Secret>
+
+..
 
 Examples
 --------
