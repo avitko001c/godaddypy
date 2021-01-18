@@ -27,7 +27,18 @@ Second, install GoDaddyPy with pip.
 
 .. code-block:: bash
 
-    $ pip install godaddypy
+    $ pip install .
+
+..
+
+Third, create the directory in your home called .godaddy and edit the credentials file to look like
+
+~/.godaddy/credentials
+
+.. code-block:: bash
+  [default]
+  api_key=<Your API Key>
+  api_secret=<Your API Secret>
 
 ..
 
