@@ -46,6 +46,45 @@ Third, create the directory in your home called .godaddy and edit the credential
 Examples
 --------
 
+If you provide a credentials file then you do not need to supply the api_key and api_secret
+
+.. code-block:: python
+
+    >>> from godaddypy import Client, Account
+    >>>
+    >>> my_acct = Account()
+    >>> delegate_acct = Account(delegate='DELEGATE_ID')
+    >>> client = Client(my_acct)
+    >>> delegate_client = Client(delegate_acct)
+    >>>
+    >>> client.get_domains()
+    ['domain1.example', 'domain2.example']
+    >>>
+    >>> client.get_records('domain1.example', record_type='A')
+    [{'name': 'dynamic', 'ttl': 3600, 'data': '1.1.1.1', 'type': 'A'}]
+    >>>
+    >>> client.update_ip('2.2.2.2', domains=['domain1.example'])
+    True
+    >>>
+    >>> client.get_records('domain1.example')
+    [{'name': 'dynamic', 'ttl': 3600, 'data': '2.2.2.2', 'type': 'A'}, {'name': 'dynamic', 'ttl': 3600, 'data': '::1',
+    'type': 'AAAA'},]
+    >>>
+    >>> client.get_records('apple.com', record_type='A', name='@')
+    [{u'data': u'1.2.3.4', u'type': u'A', u'name': u'@', u'ttl': 3600}]
+    >>>
+    >>> client.update_record_ip('3.3.3.3', 'domain1.example', 'dynamic', 'A')
+    True
+    >>>
+    >>> client.add_record('apple.com', {'data':'1.2.3.4','name':'test','ttl':3600, 'type':'A'})
+    True
+    >>>
+    >>> client.delete_records('apple.com', name='test')
+    True
+..
+
+If you do not provide a credentials file then you need to supply the api_key and api_secret
+
 .. code-block:: python
 
     >>> from godaddypy import Client, Account
