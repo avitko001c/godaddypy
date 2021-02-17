@@ -14,8 +14,9 @@ class Account(object):
     if configfile.exists():
         try:
             config = load_config(configfile)
-            _api_key = config['profiles']['default']['api_key']
-            _api_secret = config['profiles']['default']['api_secret']
+            profile = os.environ.get('GODADDY_DEFAULT_PROFILE', 'default')
+            _api_key = config['profiles'][profile]['godaddy_api_key']
+            _api_secret = config['profiles'][profile]['godaddy_api_secret']
         except:
             _api_key = None
             _api_secret = None

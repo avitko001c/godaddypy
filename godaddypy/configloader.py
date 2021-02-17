@@ -206,12 +206,12 @@ def build_profile_map(parsed_ini_config):
     default to be prepended with "profile", e.g.::
 
         [profile test]
-        aws_... = foo
-        aws_... = bar
+        godaddy_... = foo
+        godaddy_... = bar
 
         [profile bar]
-        aws_... = foo
-        aws_... = bar
+        godaddy_... = foo
+        godaddy_... = bar
 
         # This is *not* a profile
         [preview]
@@ -227,16 +227,16 @@ def build_profile_map(parsed_ini_config):
     the sub dictionary is a profile name.  For example, the above config file
     would be converted from::
 
-        {"profile test": {"aws_...": "foo", "aws...": "bar"},
-         "profile bar": {"aws...": "foo", "aws...": "bar"},
+        {"profile test": {"godaddy_...": "foo", "godaddy...": "bar"},
+         "profile bar": {"godaddy...": "foo", "godaddy...": "bar"},
          "preview": {"otherstuff": ...},
          "foobar": {"morestuff": ...},
          }
 
     into::
 
-        {"profiles": {"test": {"aws_...": "foo", "aws...": "bar"},
-                      "bar": {"aws...": "foo", "aws...": "bar"},
+        {"profiles": {"test": {"godaddy_...": "foo", "godaddy...": "bar"},
+                      "bar": {"godaddy...": "foo", "godaddy...": "bar"},
          "preview": {"otherstuff": ...},
          "foobar": {"morestuff": ...},
         }
